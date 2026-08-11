@@ -5,7 +5,7 @@
 
 // git - Tool used to track the code changes
 // github - Online Platform where git repository are stored and helps us in terms 
-// of collaboration
+// of collaboration 
 
 
 // 1. You are the first employee to start test automation - NO REPO AVAILBLE
