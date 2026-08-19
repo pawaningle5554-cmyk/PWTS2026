@@ -113,6 +113,29 @@ return result
 }
 console.log(removeDuplicatesChar('pawan'));
 
+console.log("*************Palindrome********");
+
+//Palindrome
+function Palindrome(str:string){
+    let pal = ""
+    for(let i= str.length-1;i>=0;i--)
+    {
+      pal = pal+str[i]
+    }
+    if(str===pal){
+      console.log("isPalindrome");
+      return true
+    }
+    else{
+      console.log("isNotPalindrome");
+      
+    }
+  }
+  console.log(Palindrome("pap"));
+  
+
+
+
 
 
 
