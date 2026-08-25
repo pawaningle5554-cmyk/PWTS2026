@@ -56,3 +56,24 @@ await date2.fill('12/12/2012')
 await submitButton.click()
 
 })
+
+test('Calander Test' , async({page})=>{
+await page.goto("https://testautomationpractice.blogspot.com/")
+await page.locator("#datepicker").first().click()
+
+const targetDate = "15"
+const targetMonth = "November"
+const targetYear = "2028"
+
+ const monthPicker = page.locator(".ui-datepicker-month")
+ const yearPicker = page.locator(".ui-datepicker-year")
+
+ while(!((await monthPicker.textContent()== targetMonth) && (await yearPicker.textContent() == targetYear)))
+    {
+        await page.getByText('Next', {exact:true}).first().click()
+    }
+ await page.getByText(targetDate, {exact:true}).click()
+ await page.waitForTimeout(2000)
+
+
+})
