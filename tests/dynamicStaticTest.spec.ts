@@ -88,7 +88,12 @@ test ("FireFox CPU Value",async({page})=>{
         console.log("Chrome-Network% - ",percentageValue);
 
     })
+    test("dyanmic locator" , async({page})=>{
 
+        await page.
+
+
+    })
 })
     
 
