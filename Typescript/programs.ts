@@ -132,6 +132,55 @@ function Palindrome(str:string){
     }
   }
   console.log(Palindrome("pap"));
+
+  //reverseString
+  function revreseString3(str:string):string{
+    let Revrese3=""
+    //let str3 = "Rawan"
+
+    for (let i=str.length-1;i>=0;i--){
+        Revrese3 = Revrese3+str[i]
+    }
+  return Revrese3
+  }console.log(revreseString3("POP"))
+
+  //CountOccurneces 
+  function countAChar(str:string, char:string){
+    let count1=0
+    for(let i=0;i<str.length;i++){
+      if(str[i]===char){
+        count1++;
+      }
+
+    }
+    return count1
+
+
+  }console.log(countAChar('Assignment',"s"));
+
+  //all occurences
+  function alloccurences(str:string){
+    const countAll:any=[]
+    for( let char of str ){
+      countAll[char]=(countAll[char] || 0)+1
+    
+    }return countAll
+  }console.log(alloccurences("Pawan"));
+  
+  function firsNonChar(str:string){
+    let firstNonChars:any =[] 
+    for(let char of str)
+    {
+      firstNonChars[char]=(firstNonChars[char] || 0)+1
+    }
+    for(let char of str){
+      if (firstNonChars[char]===1){
+        return char
+      }
+    }
+return firstNonChars
+  }console.log(firsNonChar("awan"));
+  
   
 
 
