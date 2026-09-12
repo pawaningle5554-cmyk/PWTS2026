@@ -88,11 +88,19 @@ test ("FireFox CPU Value",async({page})=>{
         console.log("Chrome-Network% - ",percentageValue);
 
     })
-    test("dyanmic locator" , async({page})=>{
+    test("dyanmic locator/Static Locator" , async({page})=>{
 
-        await page.
+        await page.goto("https://testautomationpractice.blogspot.com/")
+        //row = //tr[td[text()="Firefox"]]/td
+        //column= //th[text()="Disk (MB/s)"]/preceding-sibling::th
 
+       const  elementDynamic = page.locator("//tr[td[text()='Firefox']]/td[count(//th[text()='Disk (MB/s)']/preceding-sibling::th)+1]")
+        const elementStatic = page.locator('//table[@name="BookTable"]//tr[6]/td[3]')//JAVA
 
+        const StaticJava =await elementStatic.textContent()
+        console.log(StaticJava);
+        const dyanmicValue = await elementDynamic.textContent()
+        console.log(dyanmicValue);
     })
 })
     

@@ -74,6 +74,79 @@ const targetYear = "2028"
     }
  await page.getByText(targetDate, {exact:true}).click()
  await page.waitForTimeout(2000)
+})
+
+test("Practcie Form " , async({page})=>{
+    await page.goto("https://demoqa.com/automation-practice-form")
+    //Handle Input File
+    await page.locator("#firstName").pressSequentially("Pawan")
+    await expect(page.locator("#userEmail-label")).toHaveText("Email")
+
+    //RadioButton
+    await page.getByText("Male",{exact:true}).check()
+    await expect(page.getByText("Male",{exact:true})).toBeChecked()
+
+    //Date ODF Birth
+    await page.locator("#dateOfBirthInput").fill("19 Nov 2026")
+
+    //await page.locator(".react-datepicker__month-select").selectOption({label:"November"})
+    //await page.locator(".react-datepicker__year-select").selectOption({label:"2026"})
+
+    await page.locator("(//input[@type='checkbox'])[2]").check()
+
+    //File Uploads
+
+    await page.locator("#uploadPicture").setInputFiles('test-data/Skill.png')
+   const fileName= await page.locator("#uploadPicture").inputValue()
+    console.log(fileName);
+    expect(fileName).toContain("Skill.png")
+
+    //Select State and check city Disable
+
+    await expect(page.locator("#react-select-4-input")).toBeDisabled()
+
+    await page.locator("#react-select-3-input").click()
+    await page.getByText("NCR",{exact:true}).click()
+    await expect(page.getByText("NCR",{exact:true})).toHaveText("NCR")
+
+    await expect(page.locator("#react-select-4-input")).toBeEnabled()
+    
+    await page.locator('#react-select-4-input').click();
+    await page.getByText('Delhi', { exact: true }).click();
+
+})
+
+test("Alert on webPage", async({page})=>{
+    await page.goto("https://demo.automationtesting.in/Alerts.html")
+    page.on("dialog", async(alert)=>{
+        alert.accept()
+        console.log(alert.message());  
+    })
+    await page.locator('//button[@onclick="alertbox()"]').click()
+})
+
+test("Alert on webPage Ok / Cancel", async({page})=>{
+    await page.goto("https://demo.automationtesting.in/Alerts.html")
+    await page.getByText("Alert with OK & Cancel ", {exact:true}).click()
+
+   page.on("dialog", async(alert)=>{
+    alert.accept()
+    console.log(alert.message());
+    
+   })
+    await page.locator('//button[@onclick="confirmbox()"]').click()
+    await expect(page.getByText("You pressed Ok", {exact:true})).toHaveText("You pressed Ok")
+
+     const containText = await page.getByText("You pressed Ok", {exact:true}).textContent()
+     console.log(containText);
+     
+})  
+
+test("check comparioson opertor", async ({page})=>{
+    let a = 10
+    let b=  10
+    console.log(a==b);
+    
 
 
 })
